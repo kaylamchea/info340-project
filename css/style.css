@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-text-align: center;
+    text-align: center;
 }
 
 img {
@@ -22,10 +22,11 @@ img {
     margin-right: auto;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin-top: 1.5rem;
 }
 
 a {
-    color: #3344dd;
+    color: #0056B3;
 }
