@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+text-align: center;
+}
+
+img {
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2 {
+    margin-top: 1.5rem;
+}
