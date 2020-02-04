@@ -2,139 +2,98 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Finding a Meal</title>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Finding a Meal</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">Restaurant Picker</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="landing-page">
-    <img src="img/photo-1518644730709-0835105d9daa.jpeg" alt="Man staring at his laptop">
-    <h1>Can't decide where to eat?</h1>
-    <p>This application will find a random restaurant near you based on your preferences</p>
-    <button type="button" class="btn btn-dark"><a href="#form">Find a restaurant!</a></button>
-  </div>
-
-  <!-- Will remove breaks later. Using to test bookmark link-->
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <form id="form">
-    <div class="form-group">
-      <label for="location">Location</label>
-      <input type="text" class="form-control" id="location" placeholder="Enter location">
-    </div>
-    <div class="price-options">
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline1">$</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline2">$$</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline2">$$$</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-        <label class="custom-control-label" for="customRadioInline2">$$$$</label>
-      </div>
-      <div class="form-group">
-        <label for="formControlRange">Max distance</label>
-        <input type="range" class="form-control-range" id="formControlRange">
-      </div>
-    </div>
-    <div class="food-options">
-      <div>
-        <p>What are you in the mood for?</p>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Asian</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Barbeque</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Chinese</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Dessert</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Fast food</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Hawaiian</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Indian</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Italian</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Japanese</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Korean</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Mexican</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Pizza</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Sushi</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Thai</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Vegan</label>
-        </div>
-        <div class="form-check form-check">
-          <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1">
-          <label class="form-check-label" for="Checkbox1">Vegitarian</label>
-        </div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary"><a href="search-result.html">Go!</a></button>
-  </form>
+    <header>
+        <h1>Finding Your Next Meal</h1>
+    </header>
+    <img src="https://media4.s-nbcnews.com/j/newscms/2019_38/3017531/190919-taco-meal-stock-cs-138p_167562ec8d3a02ed66f13c11431a4532.fit-760w.jpg"
+        alt="A plate of tacos, of plain tortiallas, and of limes and a bowl of guac, of cheese, of lettuce, and of sour cream on a table.">
+    <section>
+        <h2>Topic Description</h2>
+        <p>
+            We are interested in creating a web application that helps people figure out what their next meal will be
+            and
+            where it will come from. We believe this topic is important because of multiple reasons. One reason is,
+            based on our personal experience, it can be really challenging to figure out where and what to eat if you
+            and/or your friends are indecisive. This seems to be a fairly common problem among the public too. If you
+            Google something similar to “figuring out where to eat” there are a bunch of articles that pop up.
+        </p>
+        <p>
+            Another reason why we believe this topic should be addressed is people may want to try out a new restaurant
+            without the hassle of reading a bunch of reviews and/or researching restaurants. There doesn’t seem to be
+            any major application that recommends you a new place to eat based on your preferences. This situation also
+            applies to people touring Seattle, or any city in Washington, without any locals to help them out. They
+            could read articles about the best places to eat and figure out which place to try out. But they should also
+            have the option of having a place chosen for them to eat.
+        </p>
+        <p>
+            Therefore, some of the specific challenges that come with this domain and that we intend to design a solution for are:-
+            <li>A group of going out to eat but can't seem decide on a restaurant.</li>
+            <li>People/tourists in a new place trying to find a good restaurant to eat quickly and not wanting to spend time researching and reading reviews of good restaurants.</li>
+            <li>People wanting to try new and good restaurants near to them.</li>
+            <li>Assisting people find a place to eat quickly.</li>
+        </p>
+        <p>
+            If one does not want to go out to eat and would prefer cooking something in the comfort of their own home,
+            we want to help the user figure out how creative and interesting meals can be made at home without much
+            effort. We want to assist the user in how they would cook something as well as what ingredients they would
+            need. We also want to be able to offer an easier and quicker way to get all these ingredients.
+        </p>
+        <p>
+            Lastly, in our mission to help the community, we want to be able to help people with food insecurity. Food
+            insecurity is a huge problem and we want to create a web app to address this issue and help the people in
+            need.
+        </p>
+    </section>
+    <section>
+        <h2>Potential Web Applications</h2>
+            <p>
+                One potential application is a website that recommends a restaurant based on a user’s location and
+                preferences (cost, type of meal, type of cuisine, etc.). The overarching goal of our application is to
+                reduce the time and energy people spend on deciding where to eat. The application would allow users to
+                learn more about the recommended restaurant, such as it’s address, opening times, reviews, etc. Users
+                would interact with our application by putting their location and preferences into the filter. Users
+                would then swipe through the recommended places until they find one they like.
+            </p>
+            <p>
+                Another potential application is a website that recommends you recipes based on what ingredients you
+                have or allows you to browse recipes that match your preferences (e.g. how much time you have to cook).
+                For each recipe, the ingredients would have links to Amazon Fresh and a map of nearby groceries that
+                have the ingredients. The overarching goal of our application is to make it easier for people to cook
+                homemade food. Our application would allow users to learn how to make the recipe by reading the steps or
+                watching a tutorial. Users would interact with our application by filtering for relevant recipes.
+            </p>
+            <p>
+                Our last idea is a website that indicates where free or discounted food is being offered. The
+                overarching goal of our website is to help people suffering from food insecurity find places to get a
+                free, or more affordable, meal. Our application would allow users to learn about nearby places that
+                provide free food and other resources. Users would interact with the application by putting in their
+                location and indicating what times they are available and what food they would prefer.
+            </p>
+    </section>
+    <section>
+        <h2>Related Resources</h2>
+            <ul>
+                <li><a href="https://data.seattle.gov/dataset/free-meals/65v9-zxia">Dataset</a> providing information
+                    about free meals
+                </li>
+                <li><a href="https://www.yelp.com/developers/documentation/v3/get_started">Yelp API</a> that return
+                    places'
+                    Yelp reviews</li>
+                <li><a href="https://developers.google.com/places/web-service/details">Google API</a> that returns
+                    places'
+                    Google reviews</li>
+            </ul>
+    </section>
 </body>
 
 </html>
