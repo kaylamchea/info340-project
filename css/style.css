@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
 
+a {
+    color: #00458F;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     width: 70%;
@@ -145,6 +149,10 @@ a.link-btn:hover {
     color: white;
 }
 
+.btn-primary {
+    background-color: #00458F;
+}
+
 @media (min-width:992px) {
     .restaurant-card img {
         width: 60%;
@@ -152,6 +160,7 @@ a.link-btn:hover {
 
     .restaurant-info {
         margin-top: 0;
+        margin-left: 1rem;
     }
 
     .restaurant-card {
