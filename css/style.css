@@ -18,7 +18,6 @@ img {
 
 .project-desc img {
     width: 50%;
-    margin: 2rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -29,6 +28,7 @@ img {
 
 nav ul li {
     padding-left: 1rem;
+
 }
 
 .navbar {
@@ -85,27 +85,25 @@ footer {
 
 header {
     text-align: center;
+    margin: 1.5rem 0rem;
+    animation-duration: 1.5s;
+    animation-name: slideup;
 }
 
 .active {
     text-decoration: underline
 }
 
-
-h1 {
-    animation-duration: 1s;
-    animation-name: slidein;
-}
-
-@keyframes slidein {
+@keyframes slideup {
     from {
-        margin-left: 100%;
-        width: 300%;
+        opacity: 0;
+        transform: translate(0rem, 1.5rem);
+
     }
 
     to {
-        margin-left: 0%;
-        width: 100%;
+        opacity: 1;
+        transform: translate(0rem, 0rem);
     }
 }
 
@@ -118,55 +116,33 @@ nav li:hover {
     width: 100%;
 }
 
-#image-1 {
-    animation: shake 1s;
-    animation-iteration-count: infinite;
+.project-desc p {
+    margin-bottom: 0px;
 }
 
-@keyframes shake {
-    0% {
-        transform: translate(1px, 1px) rotate(0deg);
-    }
+.project-desc {
+    text-align: center;
+}
 
-    10% {
-        transform: translate(-1px, -2px) rotate(-1deg);
-    }
+.project-desc ul {
+    list-style-position: inside;
+}
 
-    20% {
-        transform: translate(-3px, 0px) rotate(1deg);
-    }
+.start-btn {
+    margin-top: 1.5rem;
+}
 
-    30% {
-        transform: translate(3px, 2px) rotate(0deg);
-    }
+#mission {
+    margin-bottom: 1rem;
+}
 
-    40% {
-        transform: translate(1px, -1px) rotate(1deg);
-    }
+button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(15, 15, 15, 0.4);
+}
 
-    50% {
-        transform: translate(-1px, 2px) rotate(-1deg);
-    }
-
-    60% {
-        transform: translate(-3px, 1px) rotate(0deg);
-    }
-
-    70% {
-        transform: translate(3px, 1px) rotate(-1deg);
-    }
-
-    80% {
-        transform: translate(-1px, -1px) rotate(1deg);
-    }
-
-    90% {
-        transform: translate(1px, 2px) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(1px, -2px) rotate(-1deg);
-    }
+a.link-btn:hover {
+    color: white;
 }
 
 @media (min-width:992px) {
@@ -182,5 +158,20 @@ nav li:hover {
         display: flex;
         align-items: center;
         justify-content: space-around;
+    }
+
+    .project-desc {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    .project-desc ul {
+        list-style-position: outside;
+    }
+
+    .start-btn {
+        margin-top: 0rem;
     }
 }
