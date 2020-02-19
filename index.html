@@ -10,6 +10,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel='icon' href='favicon.ico' type='image/x-icon' />
   <link rel="stylesheet" href="css/style.css">
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <title>About</title>
 </head>
 
@@ -33,29 +34,35 @@
     <h1>About Restaurant Picker</h1>
   </header>
 
-  <main class="project-desc">
-    <div>
-      <div id="mission">
-        <p>Our mission is to help people save precious time spent on deciding</p>
-        <p>where to eat. With our application, users can generate a random</p>
-        <p>restaurant that matches their preferences.</p>
+  <main>
+    <div class="project-desc">
+      <div>
+        <div id="mission">
+          <p>Our mission is to help people save precious time spent on deciding</p>
+          <p>where to eat. With our application, users can generate a random</p>
+          <p>open restaurant that matches their preferences.</p>
+        </div>
+
+        <p><strong>Features:</strong></p>
+
+        <ul>
+          <li>Find nearby restaurants based on your location</li>
+          <li>Filter restaurants by food categories, price, and distance</li>
+          <li>View relevant information about the selected restaurant</li>
+        </ul>
       </div>
 
-      <p><strong>Features:</strong></p>
-
-      <ul>
-        <li>Find nearby restaurants based on your location</li>
-        <li>Filter restaurants by food categories, price, and distance</li>
-        <li>View relevant information about the selected restaurant</li>
-      </ul>
+      <img src="img/man-thinking.jpeg" alt="Man sitting down and staring at his laptop">
     </div>
 
-    <img src="img/man-thinking.jpeg" alt="Man sitting down and staring at his laptop">
+    <div class="text-center">
+      <button type="button" class="btn btn-dark start-btn"><a class="link-btn" href="application.html">Lets get
+          started!</a></button>
+    </div>
   </main>
 
-  <div class="text-center">
-    <button type="button" class="btn btn-dark start-btn"><a class="link-btn" href="application.html">Lets get
-        started!</a></button>
+  <div id="results">
+
   </div>
 
   <footer>
@@ -69,6 +76,7 @@
       </p>
     </div>
   </footer>
+
 </body>
 
 </html>
