@@ -12,20 +12,20 @@ let state = {
 let userLocation = document.querySelector('#location');
 userLocation.addEventListener('input', function () {
     state.location = userLocation.value;
-    console.log(state.location);
+    // console.log(state.location);
 });
 
 // Update distance state
 let userDistance = document.querySelector('#distance');
 userDistance.addEventListener('input', function () {
     state.distance = userDistance.value;
-    console.log(state.distance);
+    // console.log(state.distance);
 })
 
 // Update price state
 $('#radio-box').change(function () {
     state.price = $("input[name='price']:checked").val();
-    console.log(state.price);
+    // console.log(state.price);
 });
 
 // Update categories state
@@ -38,7 +38,7 @@ checkbox.addEventListener('change', () => {
     let foods = categories.join();
     state.categories = foods;
 
-    console.log(state.categories);
+    // console.log(state.categories);
 })
 
 let submit = document.querySelector('#submit-form');
@@ -78,7 +78,7 @@ function update() {
         dataType: 'json',
         success: function (data) {
             state.potential = data.businesses;
-            console.log(state.potential);
+            // console.log(state.potential);
 
             populate();
         }
@@ -87,7 +87,7 @@ function update() {
 
 function populate() {
     let randomRestaurant = (state.potential)[Math.floor(Math.random() * (state.potential).length)];
-    console.log(randomRestaurant);
+    // console.log(randomRestaurant);
 
     let resName = document.querySelector('#name');
     resName.textContent = randomRestaurant.name;
