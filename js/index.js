@@ -8,24 +8,25 @@ let state = {
     potential: ''
 }
 
+$(".btn").mouseup(function () {
+    $(this).blur();
+})
+
 // Update location state
 let userLocation = document.querySelector('#location');
 userLocation.addEventListener('input', function () {
     state.location = userLocation.value;
-    // console.log(state.location);
 });
 
 // Update distance state
 let userDistance = document.querySelector('#distance');
 userDistance.addEventListener('input', function () {
     state.distance = userDistance.value;
-    // console.log(state.distance);
 })
 
 // Update price state
 $('#radio-box').change(function () {
     state.price = $("input[name='price']:checked").val();
-    // console.log(state.price);
 });
 
 // Update categories state
@@ -37,29 +38,32 @@ checkbox.addEventListener('change', () => {
     });
     let foods = categories.join();
     state.categories = foods;
-
-    // console.log(state.categories);
 })
 
+// Hide form and show restaurant result
 let submit = document.querySelector('#submit-form');
 submit.addEventListener('click', function () {
-    document.querySelector('#search-result').removeAttribute('hidden');
-    document.querySelector('form').setAttribute('hidden', true);
-
-    update();
+    if (validateForm()) {
+        document.querySelector('#search-result').removeAttribute('hidden');
+        document.querySelector('form').setAttribute('hidden', true);
+        update();
+    }
 });
 
+// Hide restaurant result and show form
 let back = document.querySelector('#back-btn');
 back.addEventListener('click', function () {
     document.querySelector('form').removeAttribute('hidden');
     document.querySelector('#search-result').setAttribute('hidden', true);
 });
 
+// Generate another relevant restaurant
 let next = document.querySelector('#next-btn');
 next.addEventListener('click', function () {
     populate();
 });
 
+// Grab relevant restaurants from Yelp API based on user input
 function update() {
     let url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?" +
         "location=" + state.location + "&" +
@@ -78,16 +82,14 @@ function update() {
         dataType: 'json',
         success: function (data) {
             state.potential = data.businesses;
-            // console.log(state.potential);
-
             populate();
         }
     });
 }
 
+// Populate generated restaurant information
 function populate() {
     let randomRestaurant = (state.potential)[Math.floor(Math.random() * (state.potential).length)];
-    // console.log(randomRestaurant);
 
     let resName = document.querySelector('#name');
     resName.textContent = randomRestaurant.name;
@@ -107,4 +109,23 @@ function populate() {
 
     let resImage = document.querySelector('#image');
     resImage.setAttribute('src', randomRestaurant.image_url);
+}
+
+// Validate form
+function validateForm() {
+    if (state.location == "") {
+        alert("Location must be filled out");
+        return false;
+    }
+
+    if (state.price == "") {
+        alert("A price must be selected");
+        return false;
+    }
+
+    if (state.categories == "") {
+        alert("At least one category must be selected");
+    }
+
+    return true;
 }
