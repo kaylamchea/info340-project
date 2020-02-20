@@ -37,13 +37,13 @@
   <main>
     <form aria-label="Submit restaurant preferences">
       <div class="form-content">
-        <fieldset class="form-group">
+        <div class="form-group">
           <label for="location">Location</label>
           <input type="text" name="location" class="form-control" id="location"
             placeholder="Enter address, city, or zip code">
-        </fieldset>
+        </div>
 
-        <fieldset class="form-group">
+        <div class="form-group">
           <p id="price-label">Price</p>
           <div id="radio-box" role="radiogroup" aria-labelledby="price-label">
             <div class="custom-control custom-radio custom-control-inline">
@@ -63,9 +63,9 @@
               <label class="custom-control-label" for="$$$$">$$$$</label>
             </div>
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-group">
+        <div class="form-group">
           <label for="distance">Max distance (select one):</label>
           <select class="form-control" id="distance" name="distance">
             <option selected="selected" value="1609">&lt; 1 mile</option>
@@ -74,9 +74,9 @@
             <option value="24140">&lt; 15 miles</option>
             <option value="32187">&lt; 20 miles</option>
           </select>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-group">
+        <div class="form-group">
           <p id="checkbox-label">What are you in the mood for?</p>
           <div id="checkbox" role="group" aria-labelledby="checkbox-label">
             <div class="form-check">
@@ -154,7 +154,7 @@
               <label class="form-check-label" for="vegetarian">Vegetarian</label>
             </div>
           </div>
-        </fieldset>
+        </div>
 
         <button type="button" class="btn btn-primary" id="submit-form">Go!</button>
       </div>
