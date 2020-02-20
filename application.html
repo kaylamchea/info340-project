@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="Kayla Chea and Divij Satija"
-    description="A form used to generate random restaurant based on the user's preferences">
+    description="A form used to generate and display information about a random restaurant based on the user's preferences">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -66,7 +66,7 @@
         <div class="form-group">
           <label for="distance">Max distance (select one):</label>
           <select class="form-control" id="distance" name="distance">
-            <option value="1609">&lt; 1 mile</option>
+            <option selected="selected" value="1609">&lt; 1 mile</option>
             <option value="8047">&lt; 5 miles</option>
             <option value="16093">&lt; 10 miles</option>
             <option value="24140">&lt; 15 miles</option>
@@ -192,7 +192,6 @@
       </div>
     </div>
   </main>
-
 
   <footer>
     <div class="footer text-center py-3">
