@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="Kayla Chea and Divij Satija"
-    description="A form used to generate and display information about a random restaurant based on the user's preferences">
+    description="A form used to generate random restaurant based on the user's preferences">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -45,7 +45,7 @@
 
         <div class="form-group">
           <p id="price-label">Price</p>
-          <div id="radio-box" role="radiogroup" aria-labelledby="price-label">
+          <div role="radiogroup" aria-labelledby="price-label">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="$" name="price" value="1" class="custom-control-input">
               <label class="custom-control-label" for="$">$</label>
@@ -63,12 +63,12 @@
               <label class="custom-control-label" for="$$$$">$$$$</label>
             </div>
           </div>
-        </div>
+        </div> 
 
         <div class="form-group">
           <label for="distance">Max distance (select one):</label>
           <select class="form-control" id="distance" name="distance">
-            <option selected="selected" value="1609">&lt; 1 mile</option>
+            <option value="1609">&lt; 1 mile</option>
             <option value="8047">&lt; 5 miles</option>
             <option value="16093">&lt; 10 miles</option>
             <option value="24140">&lt; 15 miles</option>
@@ -78,7 +78,7 @@
 
         <div class="form-group">
           <p id="checkbox-label">What are you in the mood for?</p>
-          <div id="checkbox" role="group" aria-labelledby="checkbox-label">
+          <div role="group" aria-labelledby="checkbox-label">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="asian" name="category" value="asianfusion">
               <label class="form-check-label" for="asian">Asian</label>
@@ -156,43 +156,10 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary" id="submit-form">Go!</button>
+        <a role="button" aria-label="Submit" class="btn btn-primary" href="search-result.html">Go!</a>
       </div>
     </form>
 
-    <div id="search-result" hidden>
-      <div class="restaurant-card">
-        <img id="image" src="//:0" alt="Restaurant of interest">
-        <div class="restaurant-info">
-          <p>
-            <strong>Restaurant Name:</strong>
-            <span id="name"></span>
-          </p>
-
-          <p>
-            <strong>Location:</strong>
-            <span id="address"></span>
-          </p>
-
-          <p>
-            <strong>Rating:</strong>
-            <span id="rating"></span>
-          </p>
-
-          <p>
-            <strong>Price:</strong>
-            <span id="price"></span>
-          </p>
-
-          <a role="button" aria-label="Learn more" class="btn btn-dark" id="more-info" href="">Learn more</a>
-        </div>
-      </div>
-
-      <div class="choice-buttons">
-        <button type="button" class="btn btn-primary" id="next-btn">Next restaurant</button>
-        <button type="button" class="btn btn-secondary" id="back-btn">Go back</button>
-      </div>
-    </div>
   </main>
 
   <footer>
@@ -206,8 +173,6 @@
       </p>
     </div>
   </footer>
-
-  <script src="js/index.js"></script>
 </body>
 
 </html>
