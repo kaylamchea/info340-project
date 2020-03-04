@@ -5,7 +5,9 @@ let state = {
     distance: '',
     price: '',
     categories: '',
-    potential: ''
+    potential: '',
+    currRes: '',
+    saved: []
 }
 
 $(".btn").mouseup(function () {
@@ -90,7 +92,8 @@ function update() {
 // Populate generated restaurant information
 function populate() {
     let randomRestaurant = (state.potential)[Math.floor(Math.random() * (state.potential).length)];
-
+    state.currRes = randomRestaurant;
+    
     let resName = document.querySelector('#name');
     resName.textContent = randomRestaurant.name;
 
@@ -128,4 +131,32 @@ function validateForm() {
     }
 
     return true;
+}
+
+// Update saved restaurants state
+let save = document.querySelector('#save-btn');
+save.addEventListener('click', function () {  
+    state.saved[(state.saved).length] = state.currRes;
+    document.querySelector('#tempMessage').setAttribute('hidden', true);
+    renderSaved();
+});
+
+// Render saved restaurants
+function renderSaved() {
+    let div = document.querySelector('#saved');
+    div.textContent = '';
+
+    let saved = state.saved;
+    for (let i = 0; i < saved.length; i++) {
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(saved[i].name);
+        a.appendChild(linkText);
+        a.href = saved[i].url;
+        a.target = "_blank";
+        a.classList.add("saved-links");
+
+        div.appendChild(a);
+    }
+
+    
 }

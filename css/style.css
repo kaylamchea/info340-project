@@ -235,6 +235,18 @@ button:hover {
     padding: 2rem;
 }
 
+/* || Saved Restaurants Display */
+#saved-res {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.saved-links {
+    color: #00458F; 
+    display: block;
+}
+
+
 /* || Media Queries */
 @media (min-width:992px) {
     .project-desc {
