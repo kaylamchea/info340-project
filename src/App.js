@@ -43,7 +43,7 @@ export class App extends Component {
       <Navbar>
         <Navbar.Brand href={process.env.PUBLIC_URL + '/'}>Restaurant Picker</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse>
           <Nav className="ml-auto">
             <Nav.Link className="underline" href={process.env.PUBLIC_URL + '/'}>Home</Nav.Link>
             <Nav.Link className="underline" href={process.env.PUBLIC_URL + '/form'}>Find Restaurants</Nav.Link>

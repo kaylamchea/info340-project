@@ -1,6 +1,9 @@
 import React, { Component } from 'react'; //import React Component
 import { Footer } from './Footer';
 import CheckBox from './CheckBox';
+import { Link
+} from "react-router-dom";
+
 
 export class FormPage extends Component {    
     constructor(props) {
@@ -13,7 +16,6 @@ export class FormPage extends Component {
               {id: 3, value: "chinese", name: "Chinese", isChecked: false},
               {id: 4, value: "hotdogs", name: "Fastfood", isChecked: false}
             ],
-            checked: ''
           }
         }
 
@@ -23,11 +25,11 @@ export class FormPage extends Component {
            if (option.value === event.target.value)
               option.isChecked =  event.target.checked
         })
-        this.setState({options: options})
-        let result = options.filter(res=>res.isChecked).map(ele=>ele.value);
-        this.setState({checked: result})
 
-        this.props.onUpdate('categories', this.state.checked);
+        this.setState({options: options }, () => {
+            let result = options.filter(res=>res.isChecked).map(ele=>ele.value);
+            this.props.onUpdate('categories', result);
+        });  
       }
 
     render() {
@@ -82,7 +84,7 @@ export class FormPage extends Component {
                     </div>
                 
 
-                <a role="button" aria-label="Go to restaurant" className="btn btn-dark start-btn" href={process.env.PUBLIC_URL + '/res'}>Go!</a>       
+                <Link role="button" aria-label="Go to restaurant" className="btn btn-dark start-btn" to={process.env.PUBLIC_URL + '/res'}>Go!</Link>       
                 </div>     
             </form>
             </main>
