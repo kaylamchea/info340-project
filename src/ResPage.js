@@ -1,62 +1,113 @@
 import React, { Component } from 'react'; //import React Component
-import { ResCard } from './ResCard'
 import axios from 'axios';
 import { Footer } from './Footer';
-  
-export class ResPage extends Component { 
+import { Link } from "react-router-dom";
+
+export class ResPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            potential: []
+            potential: [],
+            curr: '',
+            location: ''
         };
 
+        this.handleClick = this.handleClick.bind(this);
+        this.handleSave = this.handleSave.bind(this);
     }
 
     checkParam() {
         let config = '';
-        if(this.props.formInfo) {
-            config  = {
-                headers: {'Authorization': 'Bearer GCdrOGFk2ro5ZOxbZWFGg-c8ECXqeeUp0rByZzImIIGDGBRzo_F7hgjeHk5RRO6TIH6BSSVW7eTEr8p0F3zT8u7nTyuBXgEVcOp4_SKkCHmCvrj4g-ZcD30KkVdhXnYx'},
+        if (this.props.formInfo) {
+            config = {
+                headers: { 'Authorization': 'Bearer t10OHYRfo3GYd6y-YdlHTkGWv8yX9VQegs5ucOD8KrVnfED2v6wceVS-WRRP8B3nbA5_wXQfD2A4OvG1B2lmzFB3MCkbP3keFNOcvZuD8hjbvsWF0SRI8IoUQYNhXnYx'},
                 params: {
-                  location: this.props.formInfo.location,
-                  distance: this.props.formInfo.distance,
-                  price: this.props.formInfo.price,
-                  categories: this.props.formInfo.categories,
-                  open_now: true
+                    location: this.props.formInfo.location,
+                    distance: this.props.formInfo.distance,
+                    price: this.props.formInfo.price,
+                    categories: this.props.formInfo.categories,
+                    open_now: true
                 }
             };
         }
 
-        return(config);
-    }    
+        return (config);
+    }
 
     componentDidMount() {
         axios.get('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?', this.checkParam())
-        .then(res => { 
-            this.setState({potential: res.data.businesses});
-        })
+            .then(res => {
+                this.setState({ potential: res.data.businesses });
+                let randomRes = (this.state.potential)[Math.floor(Math.random() * (this.state.potential).length)];
+                this.setState({ curr: randomRes });
+                let location = randomRes.location.display_address.join(' ');
+                this.setState({ location: location })
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+    }
+
+    handleClick() {
+        let randomRes = (this.state.potential)[Math.floor(Math.random() * (this.state.potential).length)];
+        this.setState({ curr: randomRes });
+        let location = randomRes.location.display_address.join(' ');
+        this.setState({ location: location })
+    }
+
+    handleSave() {
+        let curr = this.state.curr;
+        let saved = [curr.name, this.state.location, curr.rating, curr.price, curr.image_url, curr.url];
+
+        console.log(saved + 'Step 2');
+        this.props.onUpdate(saved);
     }
 
     render() {
-        let res = [];
-        if(this.state.potential.length > 0) {
-            console.log(this.state.potential);
-            let randomRes = (this.state.potential)[Math.floor(Math.random() * (this.state.potential).length)];
-            console.log(randomRes);
-            res.push (
-                <ResCard name={randomRes.name} address={randomRes.location.display_address.join(' ')} price={randomRes.price} rating={randomRes.rating} image={randomRes.image_url} url={randomRes.url}></ResCard>
-            );
-        }
+        let curr = this.state.curr;
 
         return (
             <>
-            <header>
-                <h1>Find a Restaurant</h1>
-            </header>
-            {res}
-            <Footer></Footer>
+                <header>
+                    <h1>Find a Restaurant</h1>
+                </header>
+                <main>
+                    <div className="restaurant-card">
+                        <img id="image" src={curr.image_url} alt="Restaurant of interest" />
+
+                        <div className="restaurant-info">
+                            <p>
+                                <strong>Restaurant Name: </strong>
+                                {curr.name}
+                            </p>
+
+                            <p>
+                                <strong>Location: </strong>
+                                {this.state.location}
+                            </p>
+
+                            <p>
+                                <strong>Rating: </strong>
+                                {curr.rating}
+                            </p>
+
+                            <p>
+                                <strong>Price: </strong>
+                                {curr.price}
+                            </p>
+
+                            <a role="button" aria-label="Learn more" className="btn btn-dark" href={curr.url} target="_blank">Learn more</a>
+                            <button type="button" className="btn btn-secondary" onClick={this.handleSave}>Save</button>
+                        </div>
+                    </div>
+                    <div className="choice-buttons">
+                        <button type="button" className="btn btn-primary" onClick={this.handleClick}>Next restaurant</button>
+                        <Link role="button" aria-label="Go to form" className="btn btn-secondary start-btn" to={process.env.PUBLIC_URL + '/form'}>Go back</Link>
+                    </div>
+                </main>
+                <Footer></Footer>
             </>
         )
-      }  
+    }
 }

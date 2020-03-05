@@ -44,6 +44,11 @@ nav {
   transition: all ease 500ms;
 }
 
+nav a {
+  padding-left: 1rem;
+  color: #343A41;
+}
+
 .underline::after {
   content: '';
   display: block;
@@ -101,10 +106,6 @@ header {
 }
 
 /* || Buttons */
-.start-btn {
-  margin-top: 1.5rem;
-}
-
 button:hover {
   box-shadow: 0 5px 15px rgba(15, 15, 15, 0.4);
 }
@@ -164,6 +165,57 @@ button:hover {
 
 .btn-dark:before {
   background: #383736;
+}
+
+/* || Restaurant Information Display  */
+.restaurant-card {
+  margin-top: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: auto;
+}
+
+.restaurant-card img {
+  width: 100%;
+}
+
+.restaurant-info {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.restaurant-info button {
+  margin-left: .5rem;
+}
+
+.choice-buttons {
+  text-align: center;
+  padding: 2rem;
+}
+
+.choice-buttons button {
+  margin: 0rem .5rem;
+}
+
+/* || Saved Restaurants Display */
+#res-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.saved-res {
+  width: 20rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.14);
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.saved-res img {
+  height: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 /* || Media Queries */
