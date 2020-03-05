@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import image from './img/man-thinking.jpeg';
 import { Footer } from './Footer';
+import { Link } from "react-router-dom";
 
 export class HomePage extends Component {
   render() {
@@ -33,8 +34,8 @@ export class HomePage extends Component {
         </div>
 
         <div className="text-center">
-          <a role="button" aria-label="Go to form" className="btn btn-dark start-btn" href="/form">Lets get
-            started!</a>
+          <Link role="button" aria-label="Go to form" className="btn btn-dark start-btn" to={process.env.PUBLIC_URL + '/form'}>Lets get
+            started!</Link>
         </div>
       </main>
 

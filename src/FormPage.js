@@ -1,9 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { Footer } from './Footer';
 import CheckBox from './CheckBox';
-import { Link
-} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export class FormPage extends Component {    
     constructor(props) {

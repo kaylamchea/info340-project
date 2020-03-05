@@ -22,8 +22,8 @@ export class App extends Component {
 
     this.state = {
       location: '',
-      distance: '',
-      price: '',
+      distance: '1609',
+      price: '1',
       categories: '',
     };
   }
