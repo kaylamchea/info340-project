@@ -1,38 +1,188 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+
+/* || General styles */
+* {
+    box-sizing: border-box;
+}
+
+#root {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Roboto', sans-serif;
+  width: 70%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+hr {
+  margin-top: 0rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  width: 70%;
+  display: block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* || Navigation */
+nav {
+  padding-top: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand:hover {
+  transform: scale(1.3);
+  transition: all ease 500ms;
 }
 
-@keyframes App-logo-spin {
+.underline::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  transition: width .3s;
+}
+
+.underline:hover::after {
+  width: 100%;
+}
+
+/* || Header */
+header {
+  text-align: center;
+  margin: 1.5rem 0rem;
+  animation-duration: 1.5s;
+  animation-name: slideup;
+}
+
+@keyframes slideup {
   from {
-    transform: rotate(0deg);
+      opacity: 0;
+      transform: translate(0rem, 1.5rem);
+
   }
+
   to {
-    transform: rotate(360deg);
+      opacity: 1;
+      transform: translate(0rem, 0rem);
+  }
+}
+
+/* || Project Description Page */
+.project-desc {
+  text-align: center;
+}
+
+.project-desc img {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-desc p {
+  margin-bottom: 0px;
+}
+
+.project-desc ul {
+  list-style-position: inside;
+}
+
+#mission {
+  margin-bottom: 1rem;
+}
+
+/* || Buttons */
+.start-btn {
+  margin-top: 1.5rem;
+}
+
+button:hover {
+  box-shadow: 0 5px 15px rgba(15, 15, 15, 0.4);
+}
+
+.btn {
+  position: relative;
+  border-radius: 4px;
+  outline: 0;
+  overflow: hidden;
+  background: none;
+  z-index: 1;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.btn:hover {
+  color: white;
+  background: none;
+}
+
+.btn:hover:before {
+  top: 0;
+}
+
+.btn-primary {
+  color: #00458F;
+  border: 2px #00458F solid;
+}
+
+.btn-primary:before {
+  background: #00458F;
+}
+
+.btn-secondary {
+  color: #6C757D;
+  border: 2px #6C757D solid;
+}
+
+.btn-secondary:before {
+  background: #6C757D;
+}
+
+.btn-dark {
+  color: #383736;
+  border: 2px #383736 solid;
+}
+
+.btn-dark:before {
+  background: #383736;
+}
+
+/* || Media Queries */
+@media (min-width:992px) {
+  .project-desc {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      text-align: left;
+  }
+
+  .project-desc ul {
+      list-style-position: outside;
+  }
+
+  .start-btn {
+      margin-top: 0rem;
+  }
+
+  .restaurant-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+  }
+
+  .restaurant-card img {
+      width: 60%;
+  }
+
+  .restaurant-info {
+      margin-top: 0;
+      margin-left: 1rem;
   }
 }
