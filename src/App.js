@@ -26,7 +26,6 @@ export class App extends Component {
       price: '',
       categories: '',
     };
-
   }
 
   handleChange(key, value) {
@@ -35,9 +34,6 @@ export class App extends Component {
       };
 
       this.setState(stateChanges);
-      console.log(stateChanges);
-
-      console.log(this.state);
   }
 
   render() {
@@ -51,7 +47,7 @@ export class App extends Component {
           <Nav className="ml-auto">
             <Nav.Link className="underline" href={process.env.PUBLIC_URL + '/'}>Home</Nav.Link>
             <Nav.Link className="underline" href={process.env.PUBLIC_URL + '/form'}>Find Restaurants</Nav.Link>
-            <Nav.Link className="underline" href={process.env.PUBLIC_URL + 'saved'}>Saved Restaurants</Nav.Link>
+            <Nav.Link className="underline" href={process.env.PUBLIC_URL + '/saved'}>Saved Restaurants</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -60,10 +56,13 @@ export class App extends Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path={process.env.PUBLIC_URL + '/form'}>
-            <FormPage></FormPage>
+            <FormPage onUpdate={this.handleChange}></FormPage>
           </Route>
           <Route path={process.env.PUBLIC_URL + '/saved'}>
           <div>Saved</div>
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/res'}>
+            <ResPage formInfo={this.state}></ResPage>
           </Route>
           <Route exact path={process.env.PUBLIC_URL + '/'}>
             <HomePage></HomePage>
