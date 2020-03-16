@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/project-kaylamchea/static/css/main.86a4d819.chunk.css",
-    "main.js": "/project-kaylamchea/static/js/main.1e91891b.chunk.js",
-    "main.js.map": "/project-kaylamchea/static/js/main.1e91891b.chunk.js.map",
+    "main.css": "/project-kaylamchea/static/css/main.c4610820.chunk.css",
+    "main.js": "/project-kaylamchea/static/js/main.9a9fb6e8.chunk.js",
+    "main.js.map": "/project-kaylamchea/static/js/main.9a9fb6e8.chunk.js.map",
     "runtime-main.js": "/project-kaylamchea/static/js/runtime-main.b4526e99.js",
     "runtime-main.js.map": "/project-kaylamchea/static/js/runtime-main.b4526e99.js.map",
     "static/css/2.47e06e2e.chunk.css": "/project-kaylamchea/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.afb6c6d3.chunk.js": "/project-kaylamchea/static/js/2.afb6c6d3.chunk.js",
-    "static/js/2.afb6c6d3.chunk.js.map": "/project-kaylamchea/static/js/2.afb6c6d3.chunk.js.map",
+    "static/js/2.5fc63c2f.chunk.js": "/project-kaylamchea/static/js/2.5fc63c2f.chunk.js",
+    "static/js/2.5fc63c2f.chunk.js.map": "/project-kaylamchea/static/js/2.5fc63c2f.chunk.js.map",
     "index.html": "/project-kaylamchea/index.html",
-    "precache-manifest.8ca0beb9568d8f5b9663d0e06b6a9938.js": "/project-kaylamchea/precache-manifest.8ca0beb9568d8f5b9663d0e06b6a9938.js",
+    "precache-manifest.ed712e6e0a285d0c5105ac83aba3b7ae.js": "/project-kaylamchea/precache-manifest.ed712e6e0a285d0c5105ac83aba3b7ae.js",
     "service-worker.js": "/project-kaylamchea/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/project-kaylamchea/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.86a4d819.chunk.css.map": "/project-kaylamchea/static/css/main.86a4d819.chunk.css.map",
-    "static/js/2.afb6c6d3.chunk.js.LICENSE.txt": "/project-kaylamchea/static/js/2.afb6c6d3.chunk.js.LICENSE.txt",
+    "static/css/main.c4610820.chunk.css.map": "/project-kaylamchea/static/css/main.c4610820.chunk.css.map",
+    "static/js/2.5fc63c2f.chunk.js.LICENSE.txt": "/project-kaylamchea/static/js/2.5fc63c2f.chunk.js.LICENSE.txt",
     "static/media/man-thinking.jpeg": "/project-kaylamchea/static/media/man-thinking.60a12e36.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.b4526e99.js",
     "static/css/2.47e06e2e.chunk.css",
-    "static/js/2.afb6c6d3.chunk.js",
-    "static/css/main.86a4d819.chunk.css",
-    "static/js/main.1e91891b.chunk.js"
+    "static/js/2.5fc63c2f.chunk.js",
+    "static/css/main.c4610820.chunk.css",
+    "static/js/main.9a9fb6e8.chunk.js"
   ]
 }
