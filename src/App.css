@@ -218,6 +218,11 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.saved-res button {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* || Media Queries */
 @media (min-width:992px) {
   .project-desc {

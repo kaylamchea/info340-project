@@ -5,16 +5,16 @@ import { ResCard } from './ResCard';
 export class SavedPage extends Component {
     render() {
         let restaurants = [];
+        let isLoggedIn = this.props.user;
 
-        console.log(this.props.res);
         if(this.props.res) {
             let resData = this.props.res;
 
-            for (let i = 0; i < resData.length; i++) {
+            Object.keys(resData).map(key => {
                 restaurants.push(
-                    <ResCard name={resData[i][0]} location={resData[i][1]} rating={resData[i][2]} price={resData[i][3]} image={resData[i][4]} url={resData[i][5]}></ResCard>
+                    <ResCard key={key} name={key} location={resData[key].location} rating={resData[key].rating} price={resData[key].price} image={resData[key].image} url={resData[key].url}></ResCard>
                 )
-            }
+            })
         }
 
         return (
@@ -24,12 +24,14 @@ export class SavedPage extends Component {
                     <h1>Saved Restaurants</h1>
                 </header>
                 <main>
-                    <div id="res-container">
-                        {restaurants}
-                    </div>
+                {isLoggedIn
+                    ? <div id="res-container">{restaurants}</div>
+                    : <p>Please sign in to see saved restaurants.</p>
+                }
                 </main>
                 <Footer></Footer>
             </>
         );
     }
 }
+

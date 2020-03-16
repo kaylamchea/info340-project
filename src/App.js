@@ -7,6 +7,7 @@ import { HomePage } from './HomePage';
 import { FormPage } from './FormPage';
 import { ResPage } from './ResPage';
 import { SavedPage } from './SavedPage';
+import firebase, { auth, provider } from './firebase.js';
 
 import {
   BrowserRouter as Router,
@@ -20,15 +21,18 @@ export class App extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
-    this.updateSaved = this.updateSaved.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
 
     this.state = {
       location: '',
       distance: '1609',
       price: '1',
       categories: '',
-      savedRes: []
+      user: null
     };
+
+    this.savedRef = firebase.database().ref('saved');
   }
 
   handleChange(key, value) {
@@ -39,10 +43,29 @@ export class App extends Component {
     this.setState(stateChanges);
   }
 
-  updateSaved(res) {
-    this.setState(prevState => ({
-      savedRes: [...prevState.savedRes, res]
-    }));
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        
+        this.setState({
+          user
+        });
+
+        const userRef = this.savedRef.child(user.uid);
+        userRef.on("value", (snapshot) => {
+          this.setState({ saved: snapshot.val() })
+        })  
+      });
+  }
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+      });
   }
 
   render() {
@@ -59,19 +82,22 @@ export class App extends Component {
                 <Link className="underline" to={process.env.PUBLIC_URL + '/saved'}>Saved Restaurants</Link>
               </Nav>
             </Navbar.Collapse>
+            {this.state.user ?
+              <button onClick={this.logout}>Log Out</button>                
+              :
+              <button onClick={this.login}>Log In</button>              
+            }
           </Navbar>
 
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             <Route path={process.env.PUBLIC_URL + '/form'}>
               <FormPage onUpdate={this.handleChange}></FormPage>
             </Route>
             <Route path={process.env.PUBLIC_URL + '/saved'}>
-              <SavedPage res={this.state.savedRes}></SavedPage>
+              <SavedPage user={this.state.user} res={this.state.saved}></SavedPage>
             </Route>
             <Route path={process.env.PUBLIC_URL + '/res'}>
-              <ResPage formInfo={this.state} onUpdate={this.updateSaved}></ResPage>
+              <ResPage user={this.state.user} formInfo={this.state} onUpdate={this.updateSaved}></ResPage>
             </Route>
             <Route exact path={process.env.PUBLIC_URL + '/'}>
               <HomePage></HomePage>

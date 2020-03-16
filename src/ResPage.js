@@ -2,6 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import axios from 'axios';
 import { Footer } from './Footer';
 import { Link } from "react-router-dom";
+import firebase from './firebase.js';
 
 export class ResPage extends Component {
     constructor(props) {
@@ -58,14 +59,24 @@ export class ResPage extends Component {
 
     handleSave() {
         let curr = this.state.curr;
-        let saved = [curr.name, this.state.location, curr.rating, curr.price, curr.image_url, curr.url];
 
-        console.log(saved + 'Step 2');
-        this.props.onUpdate(saved);
+        let savedRef = firebase.database().ref('saved').child(firebase.auth().currentUser.uid);
+        let res = {
+            location: this.state.location,
+            rating: curr.rating,
+            price: curr.price,
+            image: curr.image_url,
+            url: curr.url
+        }
+        savedRef.child(curr.name).set(res);
+        // itemsRef.push(item);
+        // let saved = [curr.name, this.state.location, curr.rating, curr.price, curr.image_url, curr.url];
+        // this.props.onUpdate(saved);
     }
 
     render() {
         let curr = this.state.curr;
+        let isLoggedIn = this.props.user;
 
         return (
             <>
@@ -98,7 +109,10 @@ export class ResPage extends Component {
                             </p>
 
                             <a role="button" aria-label="Learn more" className="btn btn-dark" href={curr.url} target="_blank">Learn more</a>
-                            <button type="button" className="btn btn-secondary" onClick={this.handleSave}>Save</button>
+                            { isLoggedIn 
+                                ? <button type="button" className="btn btn-secondary" onClick={this.handleSave}>Save</button>
+                                : <p>Please sign in to save</p>
+                            }
                         </div>
                     </div>
                     <div className="choice-buttons">
