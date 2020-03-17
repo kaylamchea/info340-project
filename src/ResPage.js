@@ -1,8 +1,9 @@
-import React, { Component } from 'react'; //import React Component
-import axios from 'axios';
-import { Footer } from './Footer';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import firebase from './firebase.js';
+import axios from 'axios';
+
+import { Footer } from './Footer';
 
 export class ResPage extends Component {
     constructor(props) {
@@ -14,15 +15,16 @@ export class ResPage extends Component {
             location: ''
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleNext = this.handleNext.bind(this);
         this.handleSave = this.handleSave.bind(this);
     }
 
+    // Creates parameters for the Yelp Fusion API based on the user's preferences.
     checkParam() {
         let config = '';
         if (this.props.formInfo) {
             config = {
-                headers: { 'Authorization': 'Bearer t10OHYRfo3GYd6y-YdlHTkGWv8yX9VQegs5ucOD8KrVnfED2v6wceVS-WRRP8B3nbA5_wXQfD2A4OvG1B2lmzFB3MCkbP3keFNOcvZuD8hjbvsWF0SRI8IoUQYNhXnYx'},
+                headers: { 'Authorization': 'Bearer t10OHYRfo3GYd6y-YdlHTkGWv8yX9VQegs5ucOD8KrVnfED2v6wceVS-WRRP8B3nbA5_wXQfD2A4OvG1B2lmzFB3MCkbP3keFNOcvZuD8hjbvsWF0SRI8IoUQYNhXnYx' },
                 params: {
                     location: this.props.formInfo.location,
                     distance: this.props.formInfo.distance,
@@ -36,6 +38,7 @@ export class ResPage extends Component {
         return (config);
     }
 
+    // Calls the Yelp Fusion API and updates the list of potential restaurants with the returned results. Randomly chooses one restaurant and assigns it to be the current restaurant in the state. 
     componentDidMount() {
         axios.get('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?', this.checkParam())
             .then(res => {
@@ -50,17 +53,19 @@ export class ResPage extends Component {
             });
     }
 
-    handleClick() {
+    // Randomly chooses another restaurant from the list of potential restaurants and assigns it to be the current restaurant in the state.
+    handleNext() {
         let randomRes = (this.state.potential)[Math.floor(Math.random() * (this.state.potential).length)];
         this.setState({ curr: randomRes });
         let location = randomRes.location.display_address.join(' ');
         this.setState({ location: location })
     }
 
+    // Adds restaurant to the user's list of saved restaurants.
     handleSave() {
         let curr = this.state.curr;
 
-        let savedRef = firebase.database().ref('saved').child(firebase.auth().currentUser.uid);
+        let savedRef = firebase.database().ref('saved').child(this.props.user.uid);
         let res = {
             location: this.state.location,
             rating: curr.rating,
@@ -69,9 +74,6 @@ export class ResPage extends Component {
             url: curr.url
         }
         savedRef.child(curr.name).set(res);
-        // itemsRef.push(item);
-        // let saved = [curr.name, this.state.location, curr.rating, curr.price, curr.image_url, curr.url];
-        // this.props.onUpdate(saved);
     }
 
     render() {
@@ -108,16 +110,17 @@ export class ResPage extends Component {
                                 {curr.price}
                             </p>
 
-                            <a role="button" aria-label="Learn more" className="btn btn-dark" href={curr.url} target="_blank">Learn more</a>
-                            { isLoggedIn 
+                            <a role="button" aria-label="Learn more" className="btn btn-dark" href={curr.url} rel="noopener noreferrer" target="_blank">Learn more</a>
+                            {/* Shows save button if a user is logged in, otherwise prompts the user to log in to save. */}
+                            {isLoggedIn
                                 ? <button type="button" className="btn btn-secondary" onClick={this.handleSave}>Save</button>
-                                : <p>Please sign in to save</p>
+                                : <p id='save-reminder'>Please sign in to save</p>
                             }
                         </div>
                     </div>
                     <div className="choice-buttons">
-                        <button type="button" className="btn btn-primary" onClick={this.handleClick}>Next restaurant</button>
-                        <Link role="button" aria-label="Go to form" className="btn btn-secondary start-btn" to={process.env.PUBLIC_URL + '/form'}>Go back</Link>
+                        <button type="button" className="btn btn-primary" onClick={this.handleNext}>Next restaurant</button>
+                        <Link role="button" aria-label="Go to form" className="btn btn-secondary start-btn" onClick={this.props.onBack} to={process.env.PUBLIC_URL + '/form'}>Go back</Link>
                     </div>
                 </main>
                 <Footer></Footer>

@@ -1,7 +1,8 @@
-import React, { Component } from 'react'; //import React Component
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 import { Footer } from './Footer';
 import CheckBox from './CheckBox';
-import { Link } from "react-router-dom";
 
 export class FormPage extends Component {
     constructor(props) {
@@ -28,8 +29,9 @@ export class FormPage extends Component {
         }
     }
 
+    // Toggles checkboxes on and off. Keeps track of which checkboxes are checked. 
     handleCheckChieldElement = (event) => {
-        let options = this.state.options
+        let options = this.state.options;
         options.forEach(option => {
             if (option.value === event.target.value)
                 option.isChecked = event.target.checked
@@ -57,9 +59,7 @@ export class FormPage extends Component {
                         <div className="form-content">
                             <div className="form-group">
                                 <label htmlFor="location">Location:</label>
-                                <input type="text" name="location" className="form-control" id="location"
-                                    placeholder="Enter address, city, or zip code" onChange={(event) => onUpdate(event.target.name, event.target.value)}
-                                />
+                                <input type="text" name="location" className="form-control" id="location" placeholder="Enter address, city, or zip code" onChange={(event) => onUpdate(event.target.name, event.target.value)} />
                             </div>
 
                             <div className="form-group">
@@ -92,8 +92,12 @@ export class FormPage extends Component {
                                 }
                             </div>
 
-
-                            <Link role="button" aria-label="Go to restaurant" className="btn btn-dark start-btn" to={process.env.PUBLIC_URL + '/res'}>Go!</Link>
+                            {/* Shows disabled button until the form is properly filled in. */}
+                            {
+                                this.props.location && this.props.categories
+                                    ? <Link role="button" aria-label="Go to restaurant" className="btn btn-dark start-btn" to={process.env.PUBLIC_URL + '/res'}>Go!</Link>
+                                    : <Link role="button" to="/" className="btn btn-outline-dark disabled" onClick={(event) => event.preventDefault()}>Go!</Link>
+                            }
                         </div>
                     </form>
                 </main>

@@ -2,7 +2,7 @@
 
 /* || General styles */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #root {
@@ -39,26 +39,32 @@ nav {
   padding-top: 1rem;
 }
 
-.navbar-brand:hover {
-  transform: scale(1.3);
-  transition: all ease 500ms;
-}
-
 nav a {
   padding-left: 1rem;
-  color: #343A41;
+  color: #383736;
 }
 
-.underline::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  transition: width .3s;
+nav button {
+  margin-left: 1rem;
+  border-radius: .25rem;
+  font-size: .9rem;
 }
 
-.underline:hover::after {
+nav a:hover {
+  text-decoration: none;
+  color: #383736;
+}
+
+.navbar-nav a.active::after {
+  background: #00458F;
+}
+
+.navbar-nav a:hover::after {
   width: 100%;
+}
+
+.navbar-nav .active {
+  color: #00458F;
 }
 
 /* || Header */
@@ -71,14 +77,14 @@ header {
 
 @keyframes slideup {
   from {
-      opacity: 0;
-      transform: translate(0rem, 1.5rem);
+    opacity: 0;
+    transform: translate(0rem, 1.5rem);
 
   }
 
   to {
-      opacity: 1;
-      transform: translate(0rem, 0rem);
+    opacity: 1;
+    transform: translate(0rem, 0rem);
   }
 }
 
@@ -91,6 +97,7 @@ header {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 .project-desc p {
@@ -107,7 +114,7 @@ header {
 
 /* || Buttons */
 button:hover {
-  box-shadow: 0 5px 15px rgba(15, 15, 15, 0.4);
+  box-shadow: 0 3px 12px rgba(10, 10, 10, 0.4);
 }
 
 .btn {
@@ -149,6 +156,16 @@ button:hover {
   background: #00458F;
 }
 
+.btn-primary:focus {
+  color: #00458F;
+  background: white;
+  outline: none;
+}
+
+.btn-primary:focus:hover {
+  color: white;
+}
+
 .btn-secondary {
   color: #6C757D;
   border: 2px #6C757D solid;
@@ -158,6 +175,16 @@ button:hover {
   background: #6C757D;
 }
 
+.btn-secondary:focus {
+  color: #6C757D;
+  background: white;
+  outline: none;
+}
+
+.btn-secondary:focus:hover {
+  color: white;
+}
+
 .btn-dark {
   color: #383736;
   border: 2px #383736 solid;
@@ -165,6 +192,20 @@ button:hover {
 
 .btn-dark:before {
   background: #383736;
+}
+
+.btn-dark:focus {
+  color: #383736;
+  background: white;
+  outline: none;
+}
+
+.btn-dark:focus:hover {
+  color: white;
+}
+
+.disabled {
+  cursor: none;
 }
 
 /* || Restaurant Information Display  */
@@ -197,6 +238,12 @@ button:hover {
   margin: 0rem .5rem;
 }
 
+#save-reminder {
+  margin-top: .5rem;
+  font-style: oblique;
+  font-size: .9rem;
+}
+
 /* || Saved Restaurants Display */
 #res-container {
   display: flex;
@@ -226,32 +273,51 @@ button:hover {
 /* || Media Queries */
 @media (min-width:992px) {
   .project-desc {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-      text-align: left;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .project-desc img {
+    margin-bottom: 0rem;
+    margin-left: 1rem;
   }
 
   .project-desc ul {
-      list-style-position: outside;
+    list-style-position: outside;
   }
 
   .start-btn {
-      margin-top: 0rem;
+    margin-top: 0rem;
   }
 
   .restaurant-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 
   .restaurant-card img {
-      width: 60%;
+    width: 60%;
   }
 
   .restaurant-info {
-      margin-top: 0;
-      margin-left: 1rem;
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+
+  .navbar-brand:hover {
+    transform: scale(1.3);
+    transition: all ease 500ms;
+  }
+
+  .navbar-nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    transition: width .3s;
+    background: #383736;
   }
 }

@@ -1,26 +1,23 @@
-import React, { Component } from 'react'; //import React Component
+import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
-import './App.css';
+import firebase, { auth, provider } from './firebase.js';
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+
 import { HomePage } from './HomePage';
 import { FormPage } from './FormPage';
 import { ResPage } from './ResPage';
 import { SavedPage } from './SavedPage';
-import firebase, { auth, provider } from './firebase.js';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 export class App extends Component {
   constructor(props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
 
@@ -35,19 +32,11 @@ export class App extends Component {
     this.savedRef = firebase.database().ref('saved');
   }
 
-  handleChange(key, value) {
-    let stateChanges = {
-      [key]: value
-    };
-
-    this.setState(stateChanges);
-  }
-
   login() {
-    auth.signInWithPopup(provider) 
+    auth.signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
-        
+
         this.setState({
           user
         });
@@ -55,7 +44,7 @@ export class App extends Component {
         const userRef = this.savedRef.child(user.uid);
         userRef.on("value", (snapshot) => {
           this.setState({ saved: snapshot.val() })
-        })  
+        })
       });
   }
 
@@ -68,41 +57,60 @@ export class App extends Component {
       });
   }
 
+  handleChange(key, value) {
+    let stateChanges = {
+      [key]: value
+    };
+
+    this.setState(stateChanges);
+  }
+
+  resetState() {
+    let stateChanges = {
+      location: '',
+      categories: ''
+    };
+    this.setState(stateChanges);
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <Navbar>
-            <Navbar.Brand href={process.env.PUBLIC_URL + '/'}>Restaurant Picker</Navbar.Brand>
+          <Navbar expand="lg">
+            <Navbar.Brand><NavLink to={process.env.PUBLIC_URL + '/'}>Restaurant Picker</NavLink></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
               <Nav className="ml-auto">
-                <Link className="underline" to={process.env.PUBLIC_URL + '/'}>Home</Link>
-                <Link className="underline" to={process.env.PUBLIC_URL + '/form'}>Find Restaurants</Link>
-                <Link className="underline" to={process.env.PUBLIC_URL + '/saved'}>Saved Restaurants</Link>
+                <NavLink exact to={process.env.PUBLIC_URL + '/'}>Home</NavLink>
+                <NavLink exact to={process.env.PUBLIC_URL + '/form'} onClick={this.resetState}>Find Restaurants</NavLink>
+                <NavLink exact to={process.env.PUBLIC_URL + '/saved'}>Saved Restaurants</NavLink>
               </Nav>
+  
+              {this.state.user ?
+                <button onClick={this.logout}>Log Out</button>
+                :
+                <button onClick={this.login}>Log In</button>
+              }
             </Navbar.Collapse>
-            {this.state.user ?
-              <button onClick={this.logout}>Log Out</button>                
-              :
-              <button onClick={this.login}>Log In</button>              
-            }
+
           </Navbar>
 
           <Switch>
-            <Route path={process.env.PUBLIC_URL + '/form'}>
-              <FormPage onUpdate={this.handleChange}></FormPage>
+            <Route exact path={process.env.PUBLIC_URL + '/form'}>
+              <FormPage location={this.state.location} categories={this.state.categories} onUpdate={this.handleChange}></FormPage>
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/saved'}>
+            <Route exact path={process.env.PUBLIC_URL + '/saved'}>
               <SavedPage user={this.state.user} res={this.state.saved}></SavedPage>
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/res'}>
-              <ResPage user={this.state.user} formInfo={this.state} onUpdate={this.updateSaved}></ResPage>
+            <Route exact path={process.env.PUBLIC_URL + '/res'}>
+              <ResPage user={this.state.user} formInfo={this.state} onBack={this.resetState}></ResPage>
             </Route>
             <Route exact path={process.env.PUBLIC_URL + '/'}>
               <HomePage></HomePage>
             </Route>
           </Switch>
+
         </div>
       </Router>
     );

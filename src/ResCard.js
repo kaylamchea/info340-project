@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; //import React Component
+import React, { Component } from 'react';
 import firebase from './firebase.js';
 
 export class ResCard extends Component {
@@ -8,13 +8,14 @@ export class ResCard extends Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
+    // Deletes restaurant from user's list of saved restaurants.
     handleDelete(resName) {
         let userID = firebase.auth().currentUser.uid;
         firebase.database().ref('saved/' + userID + '/' + resName).remove();
     }
 
     render() {
-        return(
+        return (
             <>
                 <div className="saved-res" id={this.props.name}>
                     <img id="image" src={this.props.image} alt="Restaurant of interest" />
@@ -22,7 +23,7 @@ export class ResCard extends Component {
                     <div className="restaurant-info">
                         <p>
                             <strong>Restaurant Name: </strong>
-                            <a href={this.props.url}>{this.props.name}</a>
+                            <a href={this.props.url} rel="noopener noreferrer" target="_blank">{this.props.name}</a>
                         </p>
 
                         <p>
